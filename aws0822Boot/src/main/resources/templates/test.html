@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<HTML xmlns:th="http://thymeleaf.org">
+	<HEAD>
+		<TITLE>테스트</TITLE>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	</HEAD>
+	<BODY>
+		타임리프 학습하기
+		<div>
+			<h3 th:text="${value}">안녕하세요</h3>
+			<h3 th:if="${value=='안녕하냐고요?'}" th:text="${'아니요'}"></h3>
+			<div th:each="tv : ${alist}">
+				<h3 th:text="${tv.name}">이름나타나는자리</h3>
+				<h3 th:text="${tv.memberid}">아이디나타나는자리</h3>
+			</div>
+		</div>
+	</BODY>
+</HTML>

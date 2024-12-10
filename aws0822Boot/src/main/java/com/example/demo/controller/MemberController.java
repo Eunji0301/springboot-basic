@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,7 +39,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@PostMapping(value="memberIdCheck.aws")
-	public String memberIdCheck(@RequestParam("memberId") String memberId) {
+	public JSONObject memberIdCheck(@RequestParam("memberId") String memberId) {
 		MemberJpaDto mdto =  memberService.memberIdCheck(memberId);
 		int cnt = 0;
 		if(mdto == null) {
@@ -47,8 +48,11 @@ public class MemberController {
 			cnt = 1;
 		}
 		
-		String value = "{\"cnt\" : \""+cnt+"\"}";
+		JSONObject js = new JSONObject();
+		js.put("cnt", cnt);
+		
+		// String value = "{\"cnt\" : \""+cnt+"\"}";
 
-		return value;
+		return js;
 	}
 }

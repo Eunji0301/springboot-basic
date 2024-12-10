@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -48,4 +49,18 @@ public class MemberJpaDto {
 	
 	@Column(columnDefinition="TEXT",nullable=true)
 	private String introduce;
+	
+	@Builder
+	public MemberJpaDto(String memberId, String memberPw, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberGender, String memberBirth, String memberHobby, String introduce) {
+		this.memberId = memberId;
+		this.memberPw = memberPw;
+		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.memberPhone = memberPhone;
+		this.memberAddress = memberAddress;
+		this.memberGender = memberGender;
+		this.memberBirth = memberBirth;
+		this.memberHobby = memberHobby;
+		this.introduce = introduce;
+	}
 }

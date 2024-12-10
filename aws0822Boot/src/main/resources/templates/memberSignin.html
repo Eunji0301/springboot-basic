@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<HTML xmlns:th="http://www.thymeleaf.org">
+<HTML xmlns:th="http://thymeleaf.org">
 <HEAD>
 <TITLE>Signin</TITLE>
 
@@ -63,7 +63,7 @@
 			
 			
 			// 가상경로를 사용해서 쓸 예정. 가짜경로 형식은 /기능/세부기능.aws
-			fm.action="<%=request.getContextPath()%>/member/memberSigninAction.aws";
+			fm.action="/member/memberSigninAction.aws";
 			fm.method = "post";
 			fm.submit();
 		}
@@ -102,7 +102,7 @@
 			
 			$.ajax({
 				type : "post", // 전송방식
-				url : "<%=request.getContextPath()%>/member/memberIdCheck.aws",
+				url : "/member/memberIdCheck.aws",
 				dataType : "json", // json타입 : 문서에서 {"키값1" : "value값", "키값2" : "value값", ...}
 				data : {
 					"memberId" : memberId
@@ -180,10 +180,9 @@
 			</tr>
 			<tr>
 				<th>성별</th>
-				<td><input type="radio" name="memberGender" id="select1"
-					value="M"><label for="select1">남성</label> <input
-					type="radio" name="memberGender" checked id="select2" value="F"
-					checked><label for="select2">여성</label></td>
+				<td><input type="radio" name="memberGender" id="select1" value="M"><label for="select1">남성</label> 
+					<input type="radio" name="memberGender" id="select2" value="F"><label for="select2">여성</label>
+				</td>
 			</tr>
 			<tr>
 				<th>생년월일</th>

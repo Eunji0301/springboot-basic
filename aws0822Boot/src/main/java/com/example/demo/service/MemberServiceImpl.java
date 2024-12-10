@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.domain.MemberJpaDto;
 import com.example.demo.domain.MemberRequestDto;
 import com.example.demo.repository.MemberRepository;
 
@@ -17,6 +18,12 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println("넘어온 memberId값 : " + memberRequestDto.getMemberId());
 		Long midx = memberRepository.save(memberRequestDto.toEntity()).getMidx();
 		return midx;
+	}
+
+	@Override
+	public MemberJpaDto memberIdCheck(String memberId) {
+		MemberJpaDto mdto = memberRepository.findMemberJpaDtoBymemberId(memberId);
+		return mdto;
 	}
 
 }

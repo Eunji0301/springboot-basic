@@ -5,11 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.domain.MemberJpaDto;
 import com.example.demo.domain.MemberRequestDto;
 import com.example.demo.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
+
 
 @Controller
 @RequestMapping(value="/member")
@@ -30,5 +34,21 @@ public class MemberController {
 		Long value = memberService.memberInsert(memberRequestDto);
 		System.out.println("value : " + value);
 		return "redirect:/";
+	}
+	
+	@ResponseBody
+	@PostMapping(value="memberIdCheck.aws")
+	public String memberIdCheck(@RequestParam("memberId") String memberId) {
+		MemberJpaDto mdto =  memberService.memberIdCheck(memberId);
+		int cnt = 0;
+		if(mdto == null) {
+			cnt = 0;
+		} else {
+			cnt = 1;
+		}
+		
+		String value = "{\"cnt\" : \""+cnt+"\"}";
+
+		return value;
 	}
 }

@@ -18,7 +18,7 @@ public class MemberRequestDto {
 	private String memberGender;
 	private String memberBirth;
 	private String memberHobby;
-	private String introduce;
+	private String introduce = "";
 	
 	@Builder // Builder를 통한 생성
 	public MemberRequestDto(String memberId, String memberPw, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberGender, String memberBirth, String memberHobby) {
@@ -27,7 +27,7 @@ public class MemberRequestDto {
 		this.memberName = memberName;
 		this.memberEmail = memberEmail;
 		this.memberPhone = memberPhone;
-		this.memberAddress = memberAddress;
+		this.memberAddress= memberAddress;
 		this.memberGender = memberGender;
 		this.memberBirth = memberBirth;
 		this.memberHobby = memberHobby;

@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.MemberJpaDto;
@@ -24,6 +26,12 @@ public class MemberServiceImpl implements MemberService{
 	public MemberJpaDto memberIdCheck(String memberId) {
 		MemberJpaDto mdto = memberRepository.findMemberJpaDtoBymemberId(memberId);
 		return mdto;
+	}
+
+	@Override
+	public ArrayList<MemberJpaDto> memberSelectAll() {
+		ArrayList<MemberJpaDto> alist = (ArrayList<MemberJpaDto>) memberRepository.findAll();
+		return alist;
 	}
 
 }

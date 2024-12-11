@@ -1,5 +1,11 @@
 package com.example.demo.domain;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name="member_tbl")
 @NoArgsConstructor
+@DynamicInsert // null인 값은 자동으로 insert 쿼리에 포함시키지 않겠다
 public class MemberJpaDto {
 	
 	@Id
@@ -49,6 +56,12 @@ public class MemberJpaDto {
 	
 	@Column(columnDefinition="TEXT",nullable=true)
 	private String introduce;
+	
+	@CreationTimestamp
+	private LocalDateTime writeday;
+	
+	@ColumnDefault("'N'")
+	private String delYN;
 	
 	@Builder
 	public MemberJpaDto(String memberId, String memberPw, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberGender, String memberBirth, String memberHobby, String introduce) {
